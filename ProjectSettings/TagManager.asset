@@ -5,6 +5,23 @@ TagManager:
   serializedVersion: 2
   tags:
   - Crop
+  - PestEatCrop1
+  - PestEatCrop2
+  - PestEatCrop3
+  - PestEatCrop4
+  - Agent
+  - Pest1
+  - Pest2
+  - Pest3
+  - Pest4
+  - Pest5
+  - Pest6
+  - Pest7
+  - Pest8
+  - Pest9
+  - Pest10
+  - Pest11
+  - Pest12
   layers:
   - Default
   - TransparentFX

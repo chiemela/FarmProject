@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class WayPointHarvestCrop : MonoBehaviour
+public class WayPointPest12EatCrop : MonoBehaviour
 {
     public GameObject[] waypoints;
     int currentWP = 0;
@@ -12,25 +10,25 @@ public class WayPointHarvestCrop : MonoBehaviour
     float speed = 4.0f;
     float accuracy = 1.0f;
     float rotSpeed = 3.0f;
-    bool HarvestCrops = false;
+    bool InvadeCrops = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        waypoints = GameObject.FindGameObjectsWithTag("Crop");
+        waypoints = GameObject.FindGameObjectsWithTag("PestEatCrop4");
     }
 
-    // this code will run when user presses "H" on the keyboard
+    // this code will run when user presses "P" on the keyboard
     public void DetectKeyPress(bool KeyPress)
     {
-        HarvestCrops = KeyPress;
+        InvadeCrops = KeyPress;
     }
 
     // LateUpdate is called once per frame
     void LateUpdate()
     {
 
-        if (HarvestCrops)
+        if (InvadeCrops)
         {
 
             if (waypoints.Length == 0) return;
@@ -60,5 +58,5 @@ public class WayPointHarvestCrop : MonoBehaviour
         }
 
     }
-
+    
 }
