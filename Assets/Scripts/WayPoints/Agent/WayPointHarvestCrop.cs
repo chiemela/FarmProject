@@ -7,16 +7,22 @@ using TMPro;
 public class WayPointHarvestCrop : MonoBehaviour
 {
     public GameObject[] waypoints;
+    public GameObject[] drainage;
+    public GameObject[] afterdrainage;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
     float accuracy = 1.0f;
     float rotSpeed = 3.0f;
     string SetWayPoints = "";
+    bool MakeDrain = false;
+    bool AfterMakeDrain = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        drainage = GameObject.FindGameObjectsWithTag("DrainageGate");
+        afterdrainage = GameObject.FindGameObjectsWithTag("AfterDrainageGate");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -146,6 +152,52 @@ public class WayPointHarvestCrop : MonoBehaviour
                 {
                     currentWP = temp_currentWP;
                     // currentWP = 0;
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
+        // Agent does this when farm gets flooded
+        else if (SetWayPoints == "DrainErosion")
+        {
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+                if(!MakeDrain)
+                {
+                    MakeDrain = true;
+                    
+                    foreach (GameObject a in drainage)
+                    {
+                        a.GetComponent<OpenDrainageGate>().DetectKeyPress("DrainageGate");
+                    }
+                }
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = temp_currentWP;
+                    if(!AfterMakeDrain)
+                    {
+                        AfterMakeDrain = true;
+                        
+                        foreach (GameObject a in afterdrainage)
+                        {
+                            a.GetComponent<Flood>().DetectKeyPress("AfterDrainageGate");
+                        }
+                    }
                 }
                 
             }

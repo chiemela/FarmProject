@@ -26,6 +26,9 @@ TagManager:
   - DestroyWeeds
   - KillPests
   - SystemDiagnosis
+  - DrainErosion
+  - DrainageGate
+  - AfterDrainageGate
   layers:
   - Default
   - TransparentFX

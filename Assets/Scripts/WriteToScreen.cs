@@ -143,11 +143,6 @@ public class WriteToScreen : MonoBehaviour
             }
         }
         
-        if(Input.GetKeyUp(KeyCode.E))
-        {
-            UserFeedbackText.text = "You pressed E key.";
-        }
-        
         if(Input.GetKeyUp(KeyCode.H))
         {
             UserFeedbackText.text = "You pressed H key.";
@@ -158,6 +153,17 @@ public class WriteToScreen : MonoBehaviour
                 a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("Crop");
             }
             
+        }
+        
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            UserFeedbackText.text = "You pressed E key.";
+            AgentStateText.text = "Make drainage.";
+            
+            foreach (GameObject a in agents)
+            {
+                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("DrainErosion");
+            }
         }
         
         if(Input.GetKeyUp(KeyCode.DownArrow))
