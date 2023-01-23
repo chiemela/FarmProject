@@ -22,6 +22,8 @@ TagManager:
   - Pest10
   - Pest11
   - Pest12
+  - WeedDestroyCrop
+  - DestroyWeeds
   layers:
   - Default
   - TransparentFX

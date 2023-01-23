@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WayPointPest10EatCrop : MonoBehaviour
+public class WayPointPest12EatCrop : MonoBehaviour
 {
     public GameObject[] waypoints;
     int currentWP = 0;
@@ -10,7 +10,7 @@ public class WayPointPest10EatCrop : MonoBehaviour
     float speed = 4.0f;
     float accuracy = 1.0f;
     float rotSpeed = 3.0f;
-    bool InvadeCrops = false;
+    string InvadeCrops = "";
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class WayPointPest10EatCrop : MonoBehaviour
     }
 
     // this code will run when user presses "P" on the keyboard
-    public void DetectKeyPress(bool KeyPress)
+    public void DetectKeyPress(string KeyPress)
     {
         InvadeCrops = KeyPress;
     }
@@ -28,7 +28,7 @@ public class WayPointPest10EatCrop : MonoBehaviour
     void LateUpdate()
     {
 
-        if (InvadeCrops)
+        if (InvadeCrops == "Pest")
         {
 
             if (waypoints.Length == 0) return;

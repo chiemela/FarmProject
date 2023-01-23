@@ -56,6 +56,11 @@ public class WriteToScreen : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.W))
         {
             UserFeedbackText.text = "Weeds sprouting.";
+            
+            foreach (GameObject a in agents)
+            {
+                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("DestroyWeeds");
+            }
         }
         
         if(Input.GetKeyUp(KeyCode.P))
@@ -66,51 +71,51 @@ public class WriteToScreen : MonoBehaviour
             // when user presses the "P" key then it will send the keypress to the method in the various classes as I have typed below
             foreach (GameObject a in pests1)
             {
-                a.GetComponent<WayPointPest1EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest1EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests2)
             {
-                a.GetComponent<WayPointPest2EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest2EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests3)
             {
-                a.GetComponent<WayPointPest3EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest3EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests4)
             {
-                a.GetComponent<WayPointPest4EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest4EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests5)
             {
-                a.GetComponent<WayPointPest5EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest5EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests6)
             {
-                a.GetComponent<WayPointPest6EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest6EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests7)
             {
-                a.GetComponent<WayPointPest7EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest7EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests8)
             {
-                a.GetComponent<WayPointPest8EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest8EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests9)
             {
-                a.GetComponent<WayPointPest9EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest9EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests10)
             {
-                a.GetComponent<WayPointPest10EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest10EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests11)
             {
-                a.GetComponent<WayPointPest11EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest11EatCrop>().DetectKeyPress("Pest");
             }
             foreach (GameObject a in pests12)
             {
-                a.GetComponent<WayPointPest12EatCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointPest12EatCrop>().DetectKeyPress("Pest");
             }
         }
         
@@ -125,7 +130,7 @@ public class WriteToScreen : MonoBehaviour
             
             foreach (GameObject a in agents)
             {
-                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress(true);
+                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("Crop");
             }
             
         }
