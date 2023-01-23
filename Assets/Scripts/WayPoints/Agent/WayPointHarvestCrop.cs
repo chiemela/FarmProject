@@ -27,6 +27,7 @@ public class WayPointHarvestCrop : MonoBehaviour
         SetWayPoints = KeyPress;
         // this sets a new Waypoint to whatever input passed from "WriteToScreen.cs"
         waypoints = GameObject.FindGameObjectsWithTag(SetWayPoints);
+        currentWP = 0;
     }
 
     // LateUpdate is called once per frame
@@ -65,6 +66,66 @@ public class WayPointHarvestCrop : MonoBehaviour
 
         // Agent does this if user presses "W" key on the keyboard
         else if (SetWayPoints == "DestroyWeeds")
+        {
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+                
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = temp_currentWP;
+                    // currentWP = 0;
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
+        // Agent does this if user presses "P" key on the keyboard
+        else if (SetWayPoints == "KillPests")
+        {
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+                
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = temp_currentWP;
+                    // currentWP = 0;
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
+        // Agent does this when "AgentHealth" gets to 25%
+        else if (SetWayPoints == "SystemDiagnosis")
         {
 
             if (waypoints.Length == 0) return;
