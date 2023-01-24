@@ -29,6 +29,12 @@ TagManager:
   - DrainErosion
   - DrainageGate
   - AfterDrainageGate
+  - DisplayManager
+  - BadCrop1
+  - BadCrop2
+  - BadCrop3
+  - BadCrop4
+  - BadSoil
   layers:
   - Default
   - TransparentFX

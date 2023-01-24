@@ -9,6 +9,11 @@ public class WayPointHarvestCrop : MonoBehaviour
     public GameObject[] waypoints;
     public GameObject[] drainage;
     public GameObject[] afterdrainage;
+    public GameObject[] crop1;
+    public GameObject[] crop2;
+    public GameObject[] crop3;
+    public GameObject[] crop4;
+    public GameObject[] BadSoilObject;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
@@ -23,6 +28,11 @@ public class WayPointHarvestCrop : MonoBehaviour
     {
         drainage = GameObject.FindGameObjectsWithTag("DrainageGate");
         afterdrainage = GameObject.FindGameObjectsWithTag("AfterDrainageGate");
+        crop1 = GameObject.FindGameObjectsWithTag("BadCrop1");
+        crop2 = GameObject.FindGameObjectsWithTag("BadCrop2");
+        crop3 = GameObject.FindGameObjectsWithTag("BadCrop3");
+        crop4 = GameObject.FindGameObjectsWithTag("BadCrop4");
+        BadSoilObject = GameObject.FindGameObjectsWithTag("BadSoil");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -34,6 +44,11 @@ public class WayPointHarvestCrop : MonoBehaviour
         // this sets a new Waypoint to whatever input passed from "WriteToScreen.cs"
         waypoints = GameObject.FindGameObjectsWithTag(SetWayPoints);
         currentWP = 0;
+    }
+
+    public void HandleBadCrop()
+    {
+        waypoints = GameObject.FindGameObjectsWithTag("KillPests");
     }
 
     // LateUpdate is called once per frame
@@ -73,9 +88,9 @@ public class WayPointHarvestCrop : MonoBehaviour
         // Agent does this if user presses "W" key on the keyboard
         else if (SetWayPoints == "DestroyWeeds")
         {
-
-            if (waypoints.Length == 0) return;
             
+            if (waypoints.Length == 0) return;
+                
             Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
 
             Vector3 direction = lookAtGoal - this.transform.position;
@@ -198,6 +213,115 @@ public class WayPointHarvestCrop : MonoBehaviour
                             a.GetComponent<Flood>().DetectKeyPress("AfterDrainageGate");
                         }
                     }
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
+        // Agent does this if user presses "C" key on the keyboard
+        else if (SetWayPoints == "BadCrop")
+        {
+
+            HandleBadCrop();
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+
+                if(currentWP == 6)
+                {
+
+                    foreach (GameObject a in crop1)
+                    {
+                        a.GetComponent<BadCropScript1>().DetectKeyPress("FixBadCrop");
+                    }
+
+                }
+                else if(currentWP == 10)
+                {
+                    
+                    foreach (GameObject a in crop2)
+                    {
+                        a.GetComponent<BadCropScript2>().DetectKeyPress("FixBadCrop");
+                    }
+                    
+                }
+                else if(currentWP == 14)
+                {
+                    
+                    foreach (GameObject a in crop3)
+                    {
+                        a.GetComponent<BadCropScript3>().DetectKeyPress("FixBadCrop");
+                    }
+                    
+                }
+                else if(currentWP == 18)
+                {
+                    
+                    foreach (GameObject a in crop4)
+                    {
+                        a.GetComponent<BadCropScript4>().DetectKeyPress("FixBadCrop");
+                    }
+                    
+                }
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = temp_currentWP;
+                    // currentWP = 0;
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
+        // Agent does this if user presses "S" key on the keyboard
+        else if (SetWayPoints == "BadSoil")
+        {
+
+            HandleBadCrop();
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+
+                if(currentWP == 18)
+                {
+                    
+                    foreach (GameObject a in BadSoilObject)
+                    {
+                        a.GetComponent<BadSoilScript>().DetectKeyPress("FixBadSoil");
+                    }
+                    
+                }
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = temp_currentWP;
+                    // currentWP = 0;
                 }
                 
             }

@@ -36,7 +36,7 @@ public class Flood : MonoBehaviour
         {
 
             // this makes the flood invisible
-            StoptHazard();
+            StopHazard();
 
         }
 
@@ -50,7 +50,7 @@ public class Flood : MonoBehaviour
 
     }
 
-    public void StoptHazard()
+    public void StopHazard()
     {
 
         // this drains the flood

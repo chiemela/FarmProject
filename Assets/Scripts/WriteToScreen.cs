@@ -49,17 +49,30 @@ public class WriteToScreen : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.S))
         {
             UserFeedbackText.text = "You pressed S key.";
-            AgentStateText.text = "Fixing the soil.";
+            AgentStateText.text = "Fix bad soil.";
+
+            foreach (GameObject b in agents)
+            {
+                b.GetComponent<WayPointHarvestCrop>().DetectKeyPress("BadSoil");
+            }
         }
         
         if(Input.GetKeyUp(KeyCode.C))
         {
+
             UserFeedbackText.text = "You pressed C key.";
-            AgentStateText.text = "Fixing the crop.";
+            AgentStateText.text = "Fix bad crop.";
+
+            foreach (GameObject b in agents)
+            {
+                b.GetComponent<WayPointHarvestCrop>().DetectKeyPress("BadCrop");
+            }
+
         }
         
         if(Input.GetKeyUp(KeyCode.W))
         {
+
             UserFeedbackText.text = "You pressed W key.";
             AgentStateText.text = "Destroying weeds.";
             
@@ -67,10 +80,12 @@ public class WriteToScreen : MonoBehaviour
             {
                 a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("DestroyWeeds");
             }
+
         }
         
         if(Input.GetKeyUp(KeyCode.P))
         {
+
             // this displays "Pests invation." on the screen for the user to understand what's happening
             UserFeedbackText.text = "You pressed P key.";
             AgentStateText.text = "Killing the pests.";
@@ -141,6 +156,7 @@ public class WriteToScreen : MonoBehaviour
                 a.GetComponent<WayPointPest12EatCrop>().DetectKeyPress("Pest");
                 
             }
+            
         }
         
         if(Input.GetKeyUp(KeyCode.H))
@@ -157,6 +173,7 @@ public class WriteToScreen : MonoBehaviour
         
         if(Input.GetKeyUp(KeyCode.E))
         {
+                
             UserFeedbackText.text = "You pressed E key.";
             AgentStateText.text = "Make drainage.";
             
@@ -164,6 +181,7 @@ public class WriteToScreen : MonoBehaviour
             {
                 a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("DrainErosion");
             }
+
         }
         
         if(Input.GetKeyUp(KeyCode.DownArrow))
