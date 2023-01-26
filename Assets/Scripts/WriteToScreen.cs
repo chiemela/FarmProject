@@ -22,6 +22,10 @@ public class WriteToScreen : MonoBehaviour
     public GameObject[] pests10;
     public GameObject[] pests11;
     public GameObject[] pests12;
+    public GameObject[] HarvestFruitScript1;
+    public GameObject[] HarvestFruitScript2;
+    public GameObject[] HarvestFruitScript3;
+    public GameObject[] HarvestFruitScript4;
     public int AgentHealth = 100;
 
     // Start is called before the first frame update
@@ -41,6 +45,10 @@ public class WriteToScreen : MonoBehaviour
         pests10 = GameObject.FindGameObjectsWithTag("Pest10");
         pests11 = GameObject.FindGameObjectsWithTag("Pest11");
         pests12 = GameObject.FindGameObjectsWithTag("Pest12");
+        HarvestFruitScript1 = GameObject.FindGameObjectsWithTag("FruitSet1");
+        HarvestFruitScript2 = GameObject.FindGameObjectsWithTag("FruitSet2");
+        HarvestFruitScript3 = GameObject.FindGameObjectsWithTag("FruitSet3");
+        HarvestFruitScript4 = GameObject.FindGameObjectsWithTag("FruitSet4");
     }
 
     // Update is called once per frame
@@ -158,7 +166,7 @@ public class WriteToScreen : MonoBehaviour
             }
             
         }
-        
+        /*
         if(Input.GetKeyUp(KeyCode.H))
         {
             UserFeedbackText.text = "You pressed H key.";
@@ -170,6 +178,7 @@ public class WriteToScreen : MonoBehaviour
             }
             
         }
+        */
         
         if(Input.GetKeyUp(KeyCode.E))
         {
@@ -201,6 +210,40 @@ public class WriteToScreen : MonoBehaviour
                 }
             }
             AgentHealthText.text = (AgentHealth.ToString()) + "%";
+            
+        }
+        
+        if(Input.GetKeyUp(KeyCode.G))
+        {
+
+            UserFeedbackText.text = "You pressed G key. Fruits has now matured and are ready for harvest.";
+            AgentStateText.text = "Harvesting the crops.";
+
+            
+            foreach (GameObject a in agents)
+            {
+                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("Crop");
+            }
+
+            foreach (GameObject a in HarvestFruitScript1)
+            {
+                a.GetComponent<HarvestFruitScript1>().MakeFruitGrow("FruitGrow");
+            }
+
+            foreach (GameObject a in HarvestFruitScript2)
+            {
+                a.GetComponent<HarvestFruitScript2>().MakeFruitGrow("FruitGrow");
+            }
+
+            foreach (GameObject a in HarvestFruitScript3)
+            {
+                a.GetComponent<HarvestFruitScript3>().MakeFruitGrow("FruitGrow");
+            }
+
+            foreach (GameObject a in HarvestFruitScript4)
+            {
+                a.GetComponent<HarvestFruitScript4>().MakeFruitGrow("FruitGrow");
+            }
             
         }
 

@@ -35,6 +35,18 @@ TagManager:
   - BadCrop3
   - BadCrop4
   - BadSoil
+  - FruitSet1
+  - FruitSet2
+  - FruitSet3
+  - FruitSet4
+  - FruitSet5
+  - FruitSet6
+  - FruitSet7
+  - FruitSet8
+  - FruitSet9
+  - FruitSet10
+  - FruitSet11
+  - FruitSet12
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,10 @@ public class WayPointHarvestCrop : MonoBehaviour
     public GameObject[] crop3;
     public GameObject[] crop4;
     public GameObject[] BadSoilObject;
+    public GameObject[] HarvestFruitScript1;
+    public GameObject[] HarvestFruitScript2;
+    public GameObject[] HarvestFruitScript3;
+    public GameObject[] HarvestFruitScript4;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
@@ -33,6 +37,10 @@ public class WayPointHarvestCrop : MonoBehaviour
         crop3 = GameObject.FindGameObjectsWithTag("BadCrop3");
         crop4 = GameObject.FindGameObjectsWithTag("BadCrop4");
         BadSoilObject = GameObject.FindGameObjectsWithTag("BadSoil");
+        HarvestFruitScript1 = GameObject.FindGameObjectsWithTag("FruitSet1");
+        HarvestFruitScript2 = GameObject.FindGameObjectsWithTag("FruitSet2");
+        HarvestFruitScript3 = GameObject.FindGameObjectsWithTag("FruitSet3");
+        HarvestFruitScript4 = GameObject.FindGameObjectsWithTag("FruitSet4");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -70,6 +78,43 @@ public class WayPointHarvestCrop : MonoBehaviour
             
             if (direction.magnitude < accuracy)
             {
+
+                if(currentWP == 0)
+                {
+                    
+                    foreach (GameObject a in HarvestFruitScript1)
+                    {
+                        a.GetComponent<HarvestFruitScript1>().DetectKeyPress("FruitSet1");
+                    }
+                    
+                }
+                if(currentWP == 1)
+                {
+                    
+                    foreach (GameObject a in HarvestFruitScript2)
+                    {
+                        a.GetComponent<HarvestFruitScript2>().DetectKeyPress("FruitSet2");
+                    }
+                    
+                }
+                if(currentWP == 2)
+                {
+                    
+                    foreach (GameObject a in HarvestFruitScript3)
+                    {
+                        a.GetComponent<HarvestFruitScript3>().DetectKeyPress("FruitSet3");
+                    }
+                    
+                }
+                if(currentWP == 3)
+                {
+                    
+                    foreach (GameObject a in HarvestFruitScript4)
+                    {
+                        a.GetComponent<HarvestFruitScript4>().DetectKeyPress("FruitSet4");
+                    }
+                    
+                }
                 
                 temp_currentWP = currentWP;
                 currentWP++;
