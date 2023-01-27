@@ -77,8 +77,8 @@ public class WayPointHarvestCrop : MonoBehaviour
         PestsTag12 = GameObject.FindGameObjectsWithTag("Pest12");
         HarvestedFruitTag = GameObject.FindGameObjectsWithTag("HarvestedFruit");
         AgentPatrolTag = GameObject.FindGameObjectsWithTag("AgentPatrolTag");
-        // this sets the initial Waypoint to "Crop"
-        // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
+        
+        DetectKeyPress("AgentPatrolTag");
     }
 
     // this code will run when user presses "H" on the keyboard
@@ -208,7 +208,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -275,7 +275,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -382,7 +382,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -412,7 +412,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -459,6 +459,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                             a.GetComponent<Flood>().DetectKeyPress("AfterDrainageGate");
                         }
                     }
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -526,7 +527,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }
@@ -567,7 +568,7 @@ public class WayPointHarvestCrop : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                 {
                     currentWP = temp_currentWP;
-                    // currentWP = 0;
+                    DetectKeyPress("AgentPatrolTag");
                 }
                 
             }

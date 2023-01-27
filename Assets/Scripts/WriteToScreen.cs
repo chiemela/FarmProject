@@ -86,7 +86,7 @@ public class WriteToScreen : MonoBehaviour
         {
 
             UserFeedbackText.text = "You pressed W key. Agent will apply environment-safe treatment around the crops.";
-            AgentStateText.text = "Destroying weeds.";
+            AgentStateText.text = "Protect the crops from weeds.";
             AgentHealthText.text = "100%";
             
             foreach (GameObject a in agents)
@@ -101,7 +101,7 @@ public class WriteToScreen : MonoBehaviour
 
             // this displays "Pests invation." on the screen for the user to understand what's happening
             UserFeedbackText.text = "You pressed P key. Agent will get environment-safe pesticide to treat the farm.";
-            AgentStateText.text = "Killing the pests.";
+            AgentStateText.text = "Keep the pests away.";
             AgentHealthText.text = "100%";
             
             // when user presses the "P" key then it will send the keypress to the method in the various classes as I have typed below
@@ -177,7 +177,7 @@ public class WriteToScreen : MonoBehaviour
         {
                 
             UserFeedbackText.text = "You pressed E key. Agent will check if the channel gate is open if not it will open it.";
-            AgentStateText.text = "Make drainage f.";
+            AgentStateText.text = "Make drainage.";
             AgentHealthText.text = "100%";
             
             foreach (GameObject a in agents)
