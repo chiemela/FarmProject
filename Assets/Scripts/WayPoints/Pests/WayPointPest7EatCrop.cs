@@ -11,6 +11,15 @@ public class WayPointPest7EatCrop : MonoBehaviour
     float accuracy = 1.0f;
     float rotSpeed = 3.0f;
     string InvadeCrops = "";
+    public string IsFixed = "";
+
+    // this code will run when agent fixes the pest for a particular crop
+    public void DetectPestsFixed(string AgentResponse)
+    {
+
+        IsFixed = AgentResponse;
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +66,24 @@ public class WayPointPest7EatCrop : MonoBehaviour
 
         }
 
+        if(IsFixed == "FixedPests")
+        {
+
+            StoptHazard();
+
+        }
+
     }
-    
+
+    // this kills the weeds
+    public void StoptHazard()
+    {
+
+        // this kills the weeds
+        transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+        // transform.Find("C$$anonymous$$ld").GetComponent<MeshRenderer>().enabled = false;
+        // gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+    }
+
 }

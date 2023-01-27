@@ -47,6 +47,10 @@ TagManager:
   - FruitSet10
   - FruitSet11
   - FruitSet12
+  - WeedsTagForCrop1
+  - WeedsTagForCrop2
+  - WeedsTagForCrop3
+  - WeedsTagForCrop4
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,22 @@ public class WayPointHarvestCrop : MonoBehaviour
     public GameObject[] HarvestFruitScript2;
     public GameObject[] HarvestFruitScript3;
     public GameObject[] HarvestFruitScript4;
+    public GameObject[] WeedsTag1;
+    public GameObject[] WeedsTag2;
+    public GameObject[] WeedsTag3;
+    public GameObject[] WeedsTag4;
+    public GameObject[] PestsTag1;
+    public GameObject[] PestsTag2;
+    public GameObject[] PestsTag3;
+    public GameObject[] PestsTag4;
+    public GameObject[] PestsTag5;
+    public GameObject[] PestsTag6;
+    public GameObject[] PestsTag7;
+    public GameObject[] PestsTag8;
+    public GameObject[] PestsTag9;
+    public GameObject[] PestsTag10;
+    public GameObject[] PestsTag11;
+    public GameObject[] PestsTag12;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
@@ -41,6 +57,22 @@ public class WayPointHarvestCrop : MonoBehaviour
         HarvestFruitScript2 = GameObject.FindGameObjectsWithTag("FruitSet2");
         HarvestFruitScript3 = GameObject.FindGameObjectsWithTag("FruitSet3");
         HarvestFruitScript4 = GameObject.FindGameObjectsWithTag("FruitSet4");
+        WeedsTag1 = GameObject.FindGameObjectsWithTag("WeedsTagForCrop1");
+        WeedsTag2 = GameObject.FindGameObjectsWithTag("WeedsTagForCrop2");
+        WeedsTag3 = GameObject.FindGameObjectsWithTag("WeedsTagForCrop3");
+        WeedsTag4 = GameObject.FindGameObjectsWithTag("WeedsTagForCrop4");
+        PestsTag1 = GameObject.FindGameObjectsWithTag("Pest1");
+        PestsTag2 = GameObject.FindGameObjectsWithTag("Pest2");
+        PestsTag3 = GameObject.FindGameObjectsWithTag("Pest3");
+        PestsTag4 = GameObject.FindGameObjectsWithTag("Pest4");
+        PestsTag5 = GameObject.FindGameObjectsWithTag("Pest5");
+        PestsTag6 = GameObject.FindGameObjectsWithTag("Pest6");
+        PestsTag7 = GameObject.FindGameObjectsWithTag("Pest7");
+        PestsTag8 = GameObject.FindGameObjectsWithTag("Pest8");
+        PestsTag9 = GameObject.FindGameObjectsWithTag("Pest9");
+        PestsTag10 = GameObject.FindGameObjectsWithTag("Pest10");
+        PestsTag11 = GameObject.FindGameObjectsWithTag("Pest11");
+        PestsTag12 = GameObject.FindGameObjectsWithTag("Pest12");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -145,6 +177,43 @@ public class WayPointHarvestCrop : MonoBehaviour
             
             if (direction.magnitude < accuracy)
             {
+
+                if(currentWP == 3)
+                {
+
+                    foreach (GameObject a in WeedsTag1)
+                    {
+                        a.GetComponent<WeedsVisibility1>().DetectWeedFixed("FixedWeeds");
+                    }
+
+                }
+                else if(currentWP == 7)
+                {
+
+                    foreach (GameObject a in WeedsTag2)
+                    {
+                        a.GetComponent<WeedsVisibility2>().DetectWeedFixed("FixedWeeds");
+                    }
+
+                }
+                else if(currentWP == 11)
+                {
+
+                    foreach (GameObject a in WeedsTag3)
+                    {
+                        a.GetComponent<WeedsVisibility3>().DetectWeedFixed("FixedWeeds");
+                    }
+
+                }
+                else if(currentWP == 15)
+                {
+
+                    foreach (GameObject a in WeedsTag4)
+                    {
+                        a.GetComponent<WeedsVisibility4>().DetectWeedFixed("FixedWeeds");
+                    }
+
+                }
                 
                 temp_currentWP = currentWP;
                 currentWP++;
@@ -175,7 +244,84 @@ public class WayPointHarvestCrop : MonoBehaviour
             
             if (direction.magnitude < accuracy)
             {
-                
+
+                if(currentWP == 6)
+                {
+
+                    foreach (GameObject a in PestsTag1)
+                    {
+                        a.GetComponent<WayPointPest1EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag2)
+                    {
+                        a.GetComponent<WayPointPest2EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag3)
+                    {
+                        a.GetComponent<WayPointPest3EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                }
+                else if(currentWP == 10)
+                {
+
+                    foreach (GameObject a in PestsTag4)
+                    {
+                        a.GetComponent<WayPointPest4EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag5)
+                    {
+                        a.GetComponent<WayPointPest5EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag6)
+                    {
+                        a.GetComponent<WayPointPest6EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                }
+                else if(currentWP == 14)
+                {
+
+                    foreach (GameObject a in PestsTag7)
+                    {
+                        a.GetComponent<WayPointPest7EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag8)
+                    {
+                        a.GetComponent<WayPointPest8EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag9)
+                    {
+                        a.GetComponent<WayPointPest9EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                }
+                else if(currentWP == 18)
+                {
+
+                    foreach (GameObject a in PestsTag10)
+                    {
+                        a.GetComponent<WayPointPest10EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag11)
+                    {
+                        a.GetComponent<WayPointPest11EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                    foreach (GameObject a in PestsTag12)
+                    {
+                        a.GetComponent<WayPointPest12EatCrop>().DetectPestsFixed("FixedPests");
+                    }
+
+                }
+                                
                 temp_currentWP = currentWP;
                 currentWP++;
                 if (currentWP >= waypoints.Length)
