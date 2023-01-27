@@ -51,6 +51,7 @@ TagManager:
   - WeedsTagForCrop2
   - WeedsTagForCrop3
   - WeedsTagForCrop4
+  - HarvestedFruit
   layers:
   - Default
   - TransparentFX

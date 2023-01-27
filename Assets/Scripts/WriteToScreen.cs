@@ -183,8 +183,8 @@ public class WriteToScreen : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.E))
         {
                 
-            UserFeedbackText.text = "You pressed E key.";
-            AgentStateText.text = "Make drainage.";
+            UserFeedbackText.text = "You pressed E key. Agent will check if the channel gate is open if not it will open it.";
+            AgentStateText.text = "Make drainage f.";
             
             foreach (GameObject a in agents)
             {

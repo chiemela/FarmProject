@@ -34,13 +34,14 @@ public class WayPointHarvestCrop : MonoBehaviour
     public GameObject[] PestsTag10;
     public GameObject[] PestsTag11;
     public GameObject[] PestsTag12;
+    public GameObject[] HarvestedFruitTag;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
     float accuracy = 1.0f;
     float rotSpeed = 3.0f;
     string SetWayPoints = "";
-    bool MakeDrain = false;
+    // bool MakeDrain = false;
     bool AfterMakeDrain = false;
 
     // Start is called before the first frame update
@@ -73,6 +74,7 @@ public class WayPointHarvestCrop : MonoBehaviour
         PestsTag10 = GameObject.FindGameObjectsWithTag("Pest10");
         PestsTag11 = GameObject.FindGameObjectsWithTag("Pest11");
         PestsTag12 = GameObject.FindGameObjectsWithTag("Pest12");
+        HarvestedFruitTag = GameObject.FindGameObjectsWithTag("HarvestedFruit");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -144,6 +146,15 @@ public class WayPointHarvestCrop : MonoBehaviour
                     foreach (GameObject a in HarvestFruitScript4)
                     {
                         a.GetComponent<HarvestFruitScript4>().DetectKeyPress("FruitSet4");
+                    }
+                    
+                }
+                if(currentWP == 4)
+                {
+                    
+                    foreach (GameObject a in HarvestedFruitTag)
+                    {
+                        a.GetComponent<HarvestedFruitScript>().DetectFruitHarvested("FruitIsHarvested");
                     }
                     
                 }
@@ -381,9 +392,9 @@ public class WayPointHarvestCrop : MonoBehaviour
             
             if (direction.magnitude < accuracy)
             {
-                if(!MakeDrain)
+                if(currentWP > 0)
                 {
-                    MakeDrain = true;
+                    // MakeDrain = true;
                     
                     foreach (GameObject a in drainage)
                     {
