@@ -52,6 +52,8 @@ TagManager:
   - WeedsTagForCrop3
   - WeedsTagForCrop4
   - HarvestedFruit
+  - AgentPatrolTag
+  - BadCrop
   layers:
   - Default
   - TransparentFX

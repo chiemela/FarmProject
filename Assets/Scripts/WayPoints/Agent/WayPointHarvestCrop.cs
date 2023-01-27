@@ -35,6 +35,7 @@ public class WayPointHarvestCrop : MonoBehaviour
     public GameObject[] PestsTag11;
     public GameObject[] PestsTag12;
     public GameObject[] HarvestedFruitTag;
+    public GameObject[] AgentPatrolTag;
     int currentWP = 0;
     int temp_currentWP =  0;
     float speed = 4.0f;
@@ -75,6 +76,7 @@ public class WayPointHarvestCrop : MonoBehaviour
         PestsTag11 = GameObject.FindGameObjectsWithTag("Pest11");
         PestsTag12 = GameObject.FindGameObjectsWithTag("Pest12");
         HarvestedFruitTag = GameObject.FindGameObjectsWithTag("HarvestedFruit");
+        AgentPatrolTag = GameObject.FindGameObjectsWithTag("AgentPatrolTag");
         // this sets the initial Waypoint to "Crop"
         // waypoints = GameObject.FindGameObjectsWithTag("DestroyWeeds");
     }
@@ -84,8 +86,20 @@ public class WayPointHarvestCrop : MonoBehaviour
     {
         SetWayPoints = KeyPress;
         // this sets a new Waypoint to whatever input passed from "WriteToScreen.cs"
-        waypoints = GameObject.FindGameObjectsWithTag(SetWayPoints);
-        currentWP = 0;
+        if(KeyPress == "BadCrop")
+        {
+
+            currentWP = 0;
+
+        }
+        else
+        {
+
+            waypoints = GameObject.FindGameObjectsWithTag(SetWayPoints);
+            currentWP = 0;
+
+        }
+
     }
 
     public void HandleBadCrop()
@@ -97,8 +111,38 @@ public class WayPointHarvestCrop : MonoBehaviour
     void LateUpdate()
     {
 
+        // Agent does this if user presses "V" key on the keyboard
+        if (SetWayPoints == "AgentPatrolTag")
+        {
+
+            if (waypoints.Length == 0) return;
+            
+            Vector3 lookAtGoal = new Vector3(waypoints[currentWP].transform.position.x, this.transform.position.y, waypoints[currentWP].transform.position.z);
+
+            Vector3 direction = lookAtGoal - this.transform.position;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+
+            
+            if (direction.magnitude < accuracy)
+            {
+                
+                temp_currentWP = currentWP;
+                currentWP++;
+                if (currentWP >= waypoints.Length)
+                {
+                    currentWP = 0;
+                    // currentWP = 0;
+                }
+                
+            }
+            
+            this.transform.Translate(0, 0, speed * Time.deltaTime);
+
+        }
+
         // Agent does this if user presses "H" key on the keyboard
-        if (SetWayPoints == "Crop")
+        else if (SetWayPoints == "Crop")
         {
 
             if (waypoints.Length == 0) return;

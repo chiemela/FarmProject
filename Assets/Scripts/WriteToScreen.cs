@@ -56,8 +56,9 @@ public class WriteToScreen : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.S))
         {
-            UserFeedbackText.text = "You pressed S key.";
+            UserFeedbackText.text = "You pressed S key. Agent will get the organic fertilizers and apply to the soil.";
             AgentStateText.text = "Fix bad soil.";
+            AgentHealthText.text = "100%";
 
             foreach (GameObject b in agents)
             {
@@ -65,11 +66,13 @@ public class WriteToScreen : MonoBehaviour
             }
         }
         
+        /*
         if(Input.GetKeyUp(KeyCode.C))
         {
 
             UserFeedbackText.text = "You pressed C key.";
             AgentStateText.text = "Fix bad crop.";
+            AgentHealthText.text = "100%";
 
             foreach (GameObject b in agents)
             {
@@ -77,12 +80,14 @@ public class WriteToScreen : MonoBehaviour
             }
 
         }
+        */
         
         if(Input.GetKeyUp(KeyCode.W))
         {
 
-            UserFeedbackText.text = "You pressed W key.";
+            UserFeedbackText.text = "You pressed W key. Agent will apply environment-safe treatment around the crops.";
             AgentStateText.text = "Destroying weeds.";
+            AgentHealthText.text = "100%";
             
             foreach (GameObject a in agents)
             {
@@ -95,8 +100,9 @@ public class WriteToScreen : MonoBehaviour
         {
 
             // this displays "Pests invation." on the screen for the user to understand what's happening
-            UserFeedbackText.text = "You pressed P key.";
+            UserFeedbackText.text = "You pressed P key. Agent will get environment-safe pesticide to treat the farm.";
             AgentStateText.text = "Killing the pests.";
+            AgentHealthText.text = "100%";
             
             // when user presses the "P" key then it will send the keypress to the method in the various classes as I have typed below
             foreach (GameObject a in pests1)
@@ -166,25 +172,13 @@ public class WriteToScreen : MonoBehaviour
             }
             
         }
-        /*
-        if(Input.GetKeyUp(KeyCode.H))
-        {
-            UserFeedbackText.text = "You pressed H key.";
-            AgentStateText.text = "Harvesting the crops.";
-            
-            foreach (GameObject a in agents)
-            {
-                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("Crop");
-            }
-            
-        }
-        */
         
         if(Input.GetKeyUp(KeyCode.E))
         {
                 
             UserFeedbackText.text = "You pressed E key. Agent will check if the channel gate is open if not it will open it.";
             AgentStateText.text = "Make drainage f.";
+            AgentHealthText.text = "100%";
             
             foreach (GameObject a in agents)
             {
@@ -195,7 +189,7 @@ public class WriteToScreen : MonoBehaviour
         
         if(Input.GetKeyUp(KeyCode.DownArrow))
         {
-            UserFeedbackText.text = "You pressed Down arrow key.";
+            UserFeedbackText.text = "You pressed Down arrow key. If health get's down to 25%, Agent will go to Lab to Repair itself.";
             if(AgentHealth > 25) 
             {
                 AgentHealth = AgentHealth - 25;
@@ -216,8 +210,9 @@ public class WriteToScreen : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.G))
         {
 
-            UserFeedbackText.text = "You pressed G key. Fruits has now matured and are ready for harvest.";
+            UserFeedbackText.text = "You pressed G key. Fruits has now matured and are ready for harvest. Agent will pluck them with Robot arm and take them to the store.";
             AgentStateText.text = "Harvesting the crops.";
+            AgentHealthText.text = "100%";
 
             
             foreach (GameObject a in agents)
@@ -243,6 +238,21 @@ public class WriteToScreen : MonoBehaviour
             foreach (GameObject a in HarvestFruitScript4)
             {
                 a.GetComponent<HarvestFruitScript4>().MakeFruitGrow("FruitGrow");
+            }
+            
+        }
+        
+        if(Input.GetKeyUp(KeyCode.V))
+        {
+
+            UserFeedbackText.text = "You pressed V key. Agent is patrolling close to the crops.";
+            AgentStateText.text = "Patrol";
+            AgentHealthText.text = "100%";
+
+            
+            foreach (GameObject a in agents)
+            {
+                a.GetComponent<WayPointHarvestCrop>().DetectKeyPress("AgentPatrolTag");
             }
             
         }
